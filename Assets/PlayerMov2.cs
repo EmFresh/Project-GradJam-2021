@@ -9,6 +9,24 @@ public class PlayerMov2 : MonoBehaviour{
     private bool _jumpPressed = false;
     private bool _slideInput = false;
 
+    Color colorEnd = Color.black;
+
+
+    private bool _parry1 = false;
+  
+    private bool _parry2 = false;
+ 
+    private bool _parry3 = false;
+
+    [SerializeField]
+    private GameObject _parry1Obj;
+
+    [SerializeField]
+    private GameObject _parry2Obj;
+
+    [SerializeField]
+    private GameObject _parry3Obj;
+
     [SerializeField]
     private CharacterController _controller;
     [SerializeField]
@@ -28,12 +46,44 @@ public class PlayerMov2 : MonoBehaviour{
     private Vector3 _currentVelocity = Vector3.zero;
     private Vector3 _inputVelocity = Vector3.zero;
 
+    float duration = 1.0f;
+    Renderer rend;
     // Start is called before the first frame update
-    void Start(){ }
+    void Start(){
+
+        rend = GetComponent<Renderer>();
+    }
+
+    void Update()
+    {
+        if (_parry1)
+        {
+            //float lerp = Mathf.PingPong(Time.time, duration) / duration;
+
+            //_parry1Obj.GetComponent<Renderer>().material.color = Color.Lerp(_parry1Obj.GetComponent<Renderer>().material.color, colorEnd, lerp);
+        }
+
+       
+        _parry1 = false;
+
+        if (_parry2)
+        {
+
+        }
+        _parry1 = false;
+
+        if (_parry3)
+        {
+
+        }
+        _parry1 = false;
+
+    }
 
     // Update is called once per frame
     void FixedUpdate(){
 
+        
 
         float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
 
@@ -93,5 +143,35 @@ public class PlayerMov2 : MonoBehaviour{
     public void OnSlide(InputValue input)
     {
         _slideInput = Mathf.Approximately(1, input.Get<float>());
+    }
+
+    public void OnParry1(InputValue input)
+    {
+        Debug.Log("OnParry1");
+        _parry1 = Mathf.Approximately(1, input.Get<float>());
+
+       
+
+
+    }
+
+    public void OnParry2(InputValue input)
+    {
+        Debug.Log("OnParry2");
+        _parry2 = Mathf.Approximately(1, input.Get<float>());
+
+
+
+
+    }
+
+    public void OnParry3(InputValue input)
+    {
+        Debug.Log("OnParry3");
+        _parry3 = Mathf.Approximately(1, input.Get<float>());
+
+
+
+
     }
 }

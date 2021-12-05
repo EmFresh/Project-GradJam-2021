@@ -41,6 +41,30 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""Parry1"",
+                    ""type"": ""Button"",
+                    ""id"": ""995144b5-18d1-48b8-9c67-070ba195d1b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Parry2"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6196707-25cc-451f-9e78-ec8724696af4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Parry3"",
+                    ""type"": ""Button"",
+                    ""id"": ""55cdd65d-d0aa-43ef-9204-80d8d956df2b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -184,6 +208,39 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe442667-eed0-4f61-92a1-16f3719d7ed3"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Parry1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8417b1fe-be32-4a66-b338-b8911fa87886"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ab76027-9613-47c1-a0d0-ee7e48351387"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -764,6 +821,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Slide = m_Player.FindAction("Slide", throwIfNotFound: true);
+        m_Player_Parry1 = m_Player.FindAction("Parry1", throwIfNotFound: true);
+        m_Player_Parry2 = m_Player.FindAction("Parry2", throwIfNotFound: true);
+        m_Player_Parry3 = m_Player.FindAction("Parry3", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -828,6 +888,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Slide;
+    private readonly InputAction m_Player_Parry1;
+    private readonly InputAction m_Player_Parry2;
+    private readonly InputAction m_Player_Parry3;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -835,6 +898,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Slide => m_Wrapper.m_Player_Slide;
+        public InputAction @Parry1 => m_Wrapper.m_Player_Parry1;
+        public InputAction @Parry2 => m_Wrapper.m_Player_Parry2;
+        public InputAction @Parry3 => m_Wrapper.m_Player_Parry3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -853,6 +919,15 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Slide.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlide;
                 @Slide.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlide;
                 @Slide.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlide;
+                @Parry1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry1;
+                @Parry1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry1;
+                @Parry1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry1;
+                @Parry2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry2;
+                @Parry2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry2;
+                @Parry2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry2;
+                @Parry3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry3;
+                @Parry3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry3;
+                @Parry3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnParry3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -866,6 +941,15 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Slide.started += instance.OnSlide;
                 @Slide.performed += instance.OnSlide;
                 @Slide.canceled += instance.OnSlide;
+                @Parry1.started += instance.OnParry1;
+                @Parry1.performed += instance.OnParry1;
+                @Parry1.canceled += instance.OnParry1;
+                @Parry2.started += instance.OnParry2;
+                @Parry2.performed += instance.OnParry2;
+                @Parry2.canceled += instance.OnParry2;
+                @Parry3.started += instance.OnParry3;
+                @Parry3.performed += instance.OnParry3;
+                @Parry3.canceled += instance.OnParry3;
             }
         }
     }
@@ -1025,6 +1109,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnParry1(InputAction.CallbackContext context);
+        void OnParry2(InputAction.CallbackContext context);
+        void OnParry3(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
