@@ -27,7 +27,7 @@ public class BeatCounter : ScriptableObject
     }
 
 
-    public void setBPM(int bpm) => bps = (float)bpm / 60;
+    public void setBPM(int bpm) => bps = 60 / (float)bpm;
     public void setNPB(float npb) => this.npb = npb;
 
     public int getCurrentBeatCount(float time) => (int)(time / (bps * npb));
