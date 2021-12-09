@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using FMODUnity;
 [CreateAssetMenu(/* fileName = "BeatMap", */ menuName = "Scriptable Objects/BeatMap")]
 public class BeatMap : ScriptableObject
 {
+
+
 
     public BeatCounter beatCounter;
 
@@ -19,8 +21,8 @@ public class BeatMap : ScriptableObject
     [SerializeField]
     private List<NoteData> beats = new List<NoteData>();
 
-    [HideInInspector]
-    public UnityEvent<NoteData, int> onNextNote = new UnityEvent<NoteData, int>();
+
+    public UnityEvent<NoteData, int> onNewNote { get; private set; } = new UnityEvent<NoteData, int>();
 
     public enum BEAT_TYPE
     {
@@ -35,6 +37,7 @@ public class BeatMap : ScriptableObject
     {
         public int beatNum;
         public BEAT_TYPE type;
+        public int pitch;
         public float hold;
     }
 
@@ -43,35 +46,55 @@ public class BeatMap : ScriptableObject
     {
         timeLoop = 0;
         beatCounter.setBPM(bpm);
-        beatCounter.onNextBeat.AddListener(onBeats);
+        beatCounter.onNewBeat.AddListener(onBeats);
     }
     private void OnDisable()
     {
         timeLoop = 0;
         beatCounter.setBPM(bpm);
-        beatCounter.onNextBeat.RemoveListener(onBeats);
+        beatCounter.onNewBeat.RemoveListener(onBeats);
     }
 
     public void setBeatOffset(int offset)
     {
         beatOffset = offset;
     }
+
+    /// <summary>
+    /// how beats are found
+    /// </summary>
+    /// <param name="beatNum"></param>
+    /// <param name="id"></param>
     private void onBeats(int beatNum, int id)
     {
         beatCounter.setBPM(bpm);
         beatNum += beatOffset;
-        float test = 0;
-        if ((test = beatCounter.getCurrentBeatTime(beatNum)) >= startTime)
-        {
+        float currentTime = 0;
 
+        if ((currentTime = beatCounter.getCurrentBeatTime(beatNum)) >= startTime && beatNum > beatCounter.getCurrentBeatCount(startTime))
+        {
             if (beatCounter.getCurrentBeatTime(beatNum) < endTime || endTime <= startTime)
+            {
+                int finalbeat = 0;
                 foreach (var beat in beats)
+                {
                     if (beatNum - beatCounter.getCurrentBeatCount
-                    (startTime + timeLoop) == beat.beatNum)
+                   (startTime + timeLoop) == beat.beatNum)
                         if (beat.type != BEAT_TYPE.NONE)
-                            onNextNote.Invoke(beat, id);
+                            onNewNote.Invoke(beat, id);
                         else
                             timeLoop = (beatCounter.getCurrentBeatTime(beatNum) - startTime);
+
+                    finalbeat = beat.beatNum > finalbeat ? beat.beatNum : finalbeat;
+                }
+                bool missedFinalBeat = (beatNum > beatCounter.getCurrentBeatCount
+                (startTime + timeLoop + beatCounter.getCurrentBeatTime(finalbeat)));
+
+                if (missedFinalBeat)
+                    while (currentTime - (startTime + timeLoop) > 0)
+                        timeLoop += (beatCounter.getCurrentBeatTime(finalbeat) - startTime);
+
+            }
         }
         else
         {

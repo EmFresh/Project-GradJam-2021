@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Eigth Counter
   m_EditorClassIdentifier: 
   notename: eighth
-  bps: 7
+  spb: 0.46153846
   npb: 0.5
-  onNextBeat:
+  onNewBeat:
     m_PersistentCalls:
       m_Calls: []
