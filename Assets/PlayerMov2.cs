@@ -44,6 +44,7 @@ public class PlayerMov2 : MonoBehaviour{
        
             if (_controller.isGrounded){
             _inputVelocity.y = 0;
+            _gravity = 9f;
 
             if (_slideInput)
             {
@@ -72,12 +73,19 @@ public class PlayerMov2 : MonoBehaviour{
         } else{
             _inputVelocity.y -= _gravity * Time.fixedDeltaTime;    
         }
+
+        /*if (_controller.isGrounded == false)
+        {
+            if(_inputVelocity.y <= 0)
+            {
+                _gravity = 15.0f;
+            }
+        }*/
+
         _currentVelocity = _inputVelocity;
         _controller.Move(_currentVelocity * Time.fixedDeltaTime);
         _jumpPressed = false;
         elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
-
-       
 
 
     }

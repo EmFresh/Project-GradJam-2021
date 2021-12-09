@@ -547,9 +547,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 822995300}
   _moveSpeed: 9
-  _gravity: 9
+  _gravity: 6
   _fallMultiplier: 1.3
-  _jumpHeight: 3.5
+  _jumpHeight: 2.8
   interpolationFramesCount: 60
 --- !u!96 &822995306
 TrailRenderer:
