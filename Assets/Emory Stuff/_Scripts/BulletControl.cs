@@ -20,8 +20,8 @@ public class BulletControl : MonoBehaviour
 
     public void reset(float time, GameObject player, GameObject target)
     {
-        this.player = player;
         lifetime = time;
+        this.player = player;
         this.target = target;
     }
     // Update is called once per frame
@@ -32,8 +32,8 @@ public class BulletControl : MonoBehaviour
         else
             transform.position += corse * speed * Time.deltaTime;
 
-        if (Vector3.Magnitude(transform.position - target.transform.position) <= speed && corse.sqrMagnitude == 0)
-            corse = (target.transform.position - transform.position).normalized;
+        if (Vector3.Magnitude(transform.position - target.transform.position) <= speed * Time.deltaTime && corse.sqrMagnitude == 0)
+            corse = (player.transform.GetChild(0).position - transform.position).normalized;
 
         lifetime -= Time.deltaTime;
 
