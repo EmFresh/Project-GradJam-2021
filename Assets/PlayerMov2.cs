@@ -8,6 +8,7 @@ public class PlayerMov2 : MonoBehaviour{
     private Vector2 _moveInput = Vector2.zero;
     private bool _jumpPressed = false;
     private bool _slideInput = false;
+    private bool _fastfall = false;
 
     [SerializeField]
     private CharacterController _controller;
@@ -67,11 +68,21 @@ public class PlayerMov2 : MonoBehaviour{
                 _slideInput = false;
             }
         }
+<<<<<<< Updated upstream
 
         if (_inputVelocity.y < 0){
             _inputVelocity.y = -1* _gravity * _fallMultiplier;    
         } else{
             _inputVelocity.y -= _gravity * Time.fixedDeltaTime;    
+=======
+        if (_fastfall)
+        {
+            _fallMultiplier = 1.5f;
+        }
+        if (_inputVelocity.y <= 0)
+        {
+            _inputVelocity.y = -1 * _gravity * _fallMultiplier;
+>>>>>>> Stashed changes
         }
 
         /*if (_controller.isGrounded == false)

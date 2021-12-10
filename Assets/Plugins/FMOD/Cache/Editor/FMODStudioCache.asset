@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9216128120342639663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notes/BgSitar, Quarter, C6
+  m_EditorClassIdentifier: 
+  Path: event:/Notes/BgSitar, Quarter, C6
+  Guid:
+    Data1: -1598186229
+    Data2: 1318754924
+    Data3: 1451442346
+    Data4: 2024496063
+  Banks:
+  - {fileID: 827786581963475336}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2394
+--- !u!114 &-5466096244487605520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/GameTrack/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637747452644295168
+  FileSizes:
+  - Name: Desktop
+    Value: 1090
+  Exists: 1
+--- !u!114 &-2512565072508100799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notes/MainSitar, Quarter, C6
+  m_EditorClassIdentifier: 
+  Path: event:/Notes/MainSitar, Quarter, C6
+  Guid:
+    Data1: -55578638
+    Data2: 1261159367
+    Data3: -232683351
+    Data4: 1853467745
+  Banks:
+  - {fileID: 827786581963475336}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6355
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: -5466096244487605520}
+  - {fileID: 7630134502332720620}
+  - {fileID: 6683775084611503276}
+  - {fileID: 827786581963475336}
+  EditorEvents:
+  - {fileID: 3004801408745627329}
+  - {fileID: -9216128120342639663}
+  - {fileID: 2241523621244277848}
+  - {fileID: 7601403020449892732}
+  - {fileID: -2512565072508100799}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 6683775084611503276}
+  StringsBanks:
+  - {fileID: -5466096244487605520}
+  cacheTime: 637747452644305140
+  cacheVersion: 10
+--- !u!114 &827786581963475336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Notes.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/GameTrack/Build/Desktop/Notes.bank
+  Name: Notes
+  StudioPath: bank:/Notes
+  lastModified: 637747452644305140
+  FileSizes:
+  - Name: Desktop
+    Value: 71200
+  Exists: 1
+--- !u!114 &2241523621244277848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notes/Bass, Quarter, C4
+  m_EditorClassIdentifier: 
+  Path: event:/Notes/Bass, Quarter, C4
+  Guid:
+    Data1: -116705749
+    Data2: 1094133522
+    Data3: 1112135054
+    Data4: -398430105
+  Banks:
+  - {fileID: 827786581963475336}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1850
+--- !u!114 &3004801408745627329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BG/Electro Egypt
+  m_EditorClassIdentifier: 
+  Path: event:/BG/Electro Egypt
+  Guid:
+    Data1: 1132423505
+    Data2: 1206045219
+    Data3: -900247409
+    Data4: -790620221
+  Banks:
+  - {fileID: 7630134502332720620}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 162461
+--- !u!114 &6683775084611503276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/GameTrack/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637747452644295168
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &7601403020449892732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notes/DistGtr, Quarter, C5
+  m_EditorClassIdentifier: 
+  Path: event:/Notes/DistGtr, Quarter, C5
+  Guid:
+    Data1: -547581310
+    Data2: 1227437091
+    Data3: -139519818
+    Data4: -174988159
+  Banks:
+  - {fileID: 827786581963475336}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1850
+--- !u!114 &7630134502332720620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BG.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/GameTrack/Build/Desktop/BG.bank
+  Name: BG
+  StudioPath: bank:/BG
+  lastModified: 637747452644285192
+  FileSizes:
+  - Name: Desktop
+    Value: 2061120
+  Exists: 1
