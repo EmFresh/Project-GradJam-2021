@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625d7bd9a17991f49b6029aaccf6d95d, type: 3}
+  m_Name: Test Beat Map
+  m_EditorClassIdentifier: 
+  beatCounter: {fileID: 11400000, guid: 53b50514d01941a45a96716d18b33439, type: 2}
+  bpm: 130
+  beatOffset: 0
+  startTime: 0
+  endTime: 0
+  timeLoop: 51.692303
+  beats:
+  - beatNum: 1
+    type: 0
+    pitch: 0
+    hold: 0
+  - beatNum: 3
+    type: 0
+    pitch: 0
+    hold: 0
+  - beatNum: 5
+    type: 0
+    pitch: 0
+    hold: 0
+  - beatNum: 7
+    type: 0
+    pitch: 0
+    hold: 0
+  - beatNum: 16
+    type: 3
+    pitch: 0
+    hold: 0
