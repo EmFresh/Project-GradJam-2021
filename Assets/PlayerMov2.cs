@@ -19,6 +19,8 @@ public class PlayerMov2 : MonoBehaviour{
  
     private bool _parry3 = false;
 
+    public Shake _shake;
+
     [SerializeField]
     private Animator _Anim;
 
@@ -84,10 +86,14 @@ public class PlayerMov2 : MonoBehaviour{
         if (_parry1)
         {
 
+            StartCoroutine(_shake.MyShake(.1f, 0.05f));
+
             Debug.Log("UpdateTest");
             _ParryMat1.SetColor("_Color",Color.red);
 
             _NoteEffect.Play();
+
+           
         }
         else {
             _ParryMat1.SetColor("_Color", Color.white);
@@ -97,10 +103,14 @@ public class PlayerMov2 : MonoBehaviour{
         if (_parry2)
         {
 
+            StartCoroutine(_shake.MyShake(.1f, 0.05f));
+
             Debug.Log("UpdateTest");
             _ParryMat2.SetColor("_Color", Color.blue);
 
             _NoteEffect2.Play();
+
+            
         }
         else
         {
@@ -110,7 +120,11 @@ public class PlayerMov2 : MonoBehaviour{
         if (_parry3)
         {
 
+            StartCoroutine(_shake.MyShake(.1f, 0.05f));
+
             Debug.Log("UpdateTest");
+
+           
             _ParryMat3.SetColor("_Color", Color.yellow);
            _NoteEffect3.Play();
         }
