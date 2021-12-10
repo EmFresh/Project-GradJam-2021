@@ -27,6 +27,10 @@ public class PlayerMov2 : MonoBehaviour
     private VisualEffect visualEffect;
 
 
+    [SerializeField]
+    private VisualEffect _NoteEffect, _NoteEffect2, _NoteEffect3;
+
+
 
     [SerializeField]
     private Material _ParryMat1;
@@ -83,7 +87,9 @@ public class PlayerMov2 : MonoBehaviour
         {
 
             Debug.Log("UpdateTest");
-            _ParryMat1.SetColor("_Color", Color.red);
+            _ParryMat1.SetColor("_Color",Color.red);
+
+            _NoteEffect.Play();
         }
         else
         {
@@ -96,6 +102,8 @@ public class PlayerMov2 : MonoBehaviour
 
             Debug.Log("UpdateTest");
             _ParryMat2.SetColor("_Color", Color.blue);
+
+            _NoteEffect2.Play();
         }
         else
         {
@@ -107,6 +115,7 @@ public class PlayerMov2 : MonoBehaviour
 
             Debug.Log("UpdateTest");
             _ParryMat3.SetColor("_Color", Color.yellow);
+           _NoteEffect3.Play();
         }
         else
         {
