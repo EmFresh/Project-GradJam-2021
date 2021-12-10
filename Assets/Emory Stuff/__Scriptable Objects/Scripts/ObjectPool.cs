@@ -12,6 +12,7 @@ public class ObjectPool : ScriptableObject
     [Tooltip("Are objects are instantiated and hidden onload")]
     private bool instantiateOnLoad = false;
 
+    //   [SerializeField]
     [SerializeField]
     List<GameObject> objects = new List<GameObject>();
     int m_index = 0;
@@ -24,7 +25,6 @@ public class ObjectPool : ScriptableObject
         init = true;
 
         objects.Clear();
-
         if (instantiateOnLoad)
             for (int a = 0; a < cap; ++a)
             {
@@ -36,6 +36,7 @@ public class ObjectPool : ScriptableObject
     private void OnDisable()
     {
         init = false;
+        objects.Clear();
     }
 
     //  void OnDisable() => objects.Clear();
@@ -46,11 +47,14 @@ public class ObjectPool : ScriptableObject
             objects.Add(Instantiate(poolObj, position, Quaternion.Euler(rotation), parent));
             return objects[objects.Count - 1];
         }
-
-        var tmp = objects[(m_index = (m_index + 1) % (objects.Count))];
+        GameObject tmp = objects[(m_index = (m_index + 1) % (objects.Count))];
+        for (int a = 1; a < objects.Count; ++a)
+            if (!objects[(m_index + a) % (objects.Count)].activeSelf)
+                tmp = objects[((m_index + a) % (objects.Count))];
         tmp.transform.localPosition = position;
         tmp.transform.localRotation = Quaternion.Euler(rotation);
         tmp.SetActive(true);
+        ++m_index;
         return tmp;
     }
 
@@ -70,10 +74,12 @@ public class ObjectPool : ScriptableObject
             {
                 objects[index].SetActive(false);
 
-                for (int a = 1; a < objects.Count; ++a)
+                for (int a = 0; a < objects.Count; ++a)
                     if (objects[(m_index + a) % objects.Count].activeSelf)
                     {
                         swap(objects, index, (m_index + a) % objects.Count);
+
+                        //   objects.Insert(index, objects[(m_index + a + 1) % objects.Count]);
                         break;
                     }
             }

@@ -49,6 +49,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 0}
+  noteTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bulletPool: {fileID: 11400000, guid: e14fbac6d2d45f04584f089d2f15df80, type: 2}
   map: {fileID: 11400000, guid: 30d0b88b6e209ee40950c69f6f92f393, type: 2}
   beatOffset: 0

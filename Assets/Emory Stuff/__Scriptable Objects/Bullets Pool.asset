@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: Bullets Pool
   m_EditorClassIdentifier: 
   poolObj: {fileID: 6998559929273502950, guid: 9495d9401ea7a76418715a6adea868fa, type: 3}
-  cap: 50
-  instantiateOnLoad: 0
-  objects: []
+  cap: 10
+  instantiateOnLoad: 1
+  objects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
-public class PlayerMov2 : MonoBehaviour{
+public class PlayerMov2 : MonoBehaviour
+{
     private Vector2 _moveInput = Vector2.zero;
     private bool _jumpPressed = false;
     private bool _slideInput = false;
@@ -14,9 +15,9 @@ public class PlayerMov2 : MonoBehaviour{
 
 
     private bool _parry1 = false;
-  
+
     private bool _parry2 = false;
- 
+
     private bool _parry3 = false;
 
     [SerializeField]
@@ -38,13 +39,13 @@ public class PlayerMov2 : MonoBehaviour{
 
 
     [SerializeField]
-    private GameObject _parry1Obj;
+    public GameObject _parry1Obj;
 
     [SerializeField]
-    private GameObject _parry2Obj;
+    public GameObject _parry2Obj;
 
     [SerializeField]
-    private GameObject _parry3Obj;
+    public GameObject _parry3Obj;
 
     [SerializeField]
     private CharacterController _controller;
@@ -68,11 +69,12 @@ public class PlayerMov2 : MonoBehaviour{
     float duration = 1.0f;
     Renderer rend;
     // Start is called before the first frame update
-    void Start(){
+    void Start()
+    {
 
         rend = GetComponent<Renderer>();
 
-       //Anim = GetComponent<Animator>();
+        //Anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -81,9 +83,10 @@ public class PlayerMov2 : MonoBehaviour{
         {
 
             Debug.Log("UpdateTest");
-            _ParryMat1.SetColor("_Color",Color.red);
+            _ParryMat1.SetColor("_Color", Color.red);
         }
-        else {
+        else
+        {
             _ParryMat1.SetColor("_Color", Color.white);
         }
 
@@ -114,9 +117,10 @@ public class PlayerMov2 : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
 
-        
+
 
         float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
 
@@ -124,18 +128,19 @@ public class PlayerMov2 : MonoBehaviour{
         _inputVelocity.x = _moveInput.x * _moveSpeed;
         _inputVelocity.y = _currentVelocity.y;
 
-       
-            if (_controller.isGrounded){
+
+        if (_controller.isGrounded)
+        {
             _inputVelocity.y = 0;
 
-       
+
             _Anim.SetBool("IsJumping", false);
 
             //visualEffect.SetFloat("YAxis", 0);
 
             if (_slideInput)
             {
-                
+
 
 
                 Vector3 _SlideVector = _inputVelocity;
@@ -155,34 +160,40 @@ public class PlayerMov2 : MonoBehaviour{
 
             }
             // jump code here
-            if (_jumpPressed){
+            if (_jumpPressed)
+            {
                 _inputVelocity.y = Mathf.Sqrt(2 * _jumpHeight * _gravity);
                 _slideInput = false;
             }
         }
 
-        if (_inputVelocity.y < 0){
-            _inputVelocity.y = -1* _gravity * _fallMultiplier;    
-        } else{
-            _inputVelocity.y -= _gravity * Time.fixedDeltaTime;    
+        if (_inputVelocity.y < 0)
+        {
+            _inputVelocity.y = -1 * _gravity * _fallMultiplier;
+        }
+        else
+        {
+            _inputVelocity.y -= _gravity * Time.fixedDeltaTime;
         }
         _currentVelocity = _inputVelocity;
         _controller.Move(_currentVelocity * Time.fixedDeltaTime);
         _jumpPressed = false;
         elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
 
-       
+
 
 
     }
 
-    public void OnMove(InputValue input){
+    public void OnMove(InputValue input)
+    {
         _moveInput = input.Get<Vector2>();
 
         Debug.Log("Moving");
     }
 
-    public void OnJump(InputValue input){
+    public void OnJump(InputValue input)
+    {
         _jumpPressed = Mathf.Approximately(1, input.Get<float>());
 
         Debug.Log("Jump");
@@ -200,7 +211,7 @@ public class PlayerMov2 : MonoBehaviour{
         Debug.Log("OnParry1");
         _parry1 = Mathf.Approximately(1, input.Get<float>());
 
-       
+
 
 
     }
