@@ -65,9 +65,9 @@ public class EnemyController : MonoBehaviour
 
         var tmp = bulletPool.getNewObject(transform.position, Vector3.zero);
         tmp.GetComponent<BulletControl>().pool = bulletPool;
-        //    tmp.GetComponent<BulletControl>().reset(3, noteTargets[(short)a.type]);
-        tmp.GetComponent<BulletControl>().lifetime = 3;
-        tmp.GetComponent<BulletControl>().target = noteTargets[(short)a.type];
+        tmp.GetComponent<BulletControl>().reset(3, player, noteTargets[(short)a.type]);
+        //  tmp.GetComponent<BulletControl>().lifetime = 3;
+        //  tmp.GetComponent<BulletControl>().target = noteTargets[(short)a.type];
 
         // // sfx.EventInstance.
         // RuntimeManager.PlayOneShot(sfx1);
