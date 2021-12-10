@@ -10,7 +10,7 @@ public class PlayerMov2 : MonoBehaviour
     private Vector2 _moveInput = Vector2.zero;
     private bool _jumpPressed = false;
     private bool _slideInput = false;
-
+    private bool _fastfall = false;
     Color colorEnd = Color.black;
 
 
@@ -91,11 +91,11 @@ public class PlayerMov2 : MonoBehaviour
             StartCoroutine(_shake.MyShake(.1f, 0.05f));
 
             Debug.Log("UpdateTest");
-            _ParryMat1.SetColor("_Color",Color.red);
+            _ParryMat1.SetColor("_Color", Color.red);
 
             _NoteEffect.Play();
 
-           
+
         }
         else
         {
@@ -113,7 +113,7 @@ public class PlayerMov2 : MonoBehaviour
 
             _NoteEffect2.Play();
 
-            
+
         }
         else
         {
@@ -127,9 +127,9 @@ public class PlayerMov2 : MonoBehaviour
 
             Debug.Log("UpdateTest");
 
-           
+
             _ParryMat3.SetColor("_Color", Color.yellow);
-           _NoteEffect3.Play();
+            _NoteEffect3.Play();
         }
         else
         {
@@ -190,13 +190,13 @@ public class PlayerMov2 : MonoBehaviour
             }
         }
 
-        if (_inputVelocity.y < 0)
+        if (_fastfall)
+        {
+            _fallMultiplier = 1.5f;
+        }
+        if (_inputVelocity.y <= 0)
         {
             _inputVelocity.y = -1 * _gravity * _fallMultiplier;
-        }
-        else
-        {
-            _inputVelocity.y -= _gravity * Time.fixedDeltaTime;
         }
         _currentVelocity = _inputVelocity;
         _controller.Move(_currentVelocity * Time.fixedDeltaTime);

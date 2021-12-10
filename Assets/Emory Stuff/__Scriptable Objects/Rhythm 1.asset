@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 625d7bd9a17991f49b6029aaccf6d95d, type: 3}
-  m_Name: Test Beat Map
+  m_Name: Rhythm 1
   m_EditorClassIdentifier: 
   beatCounter: {fileID: 11400000, guid: 53b50514d01941a45a96716d18b33439, type: 2}
   bpm: 130
@@ -24,14 +24,22 @@ MonoBehaviour:
     pitch: 0
     hold: 0
   - beatNum: 3
-    type: 1
+    type: 0
     pitch: 0
     hold: 0
   - beatNum: 5
-    type: 2
+    type: 0
     pitch: 0
     hold: 0
-  - beatNum: 7
+  - beatNum: 6
+    type: 0
+    pitch: 0
+    hold: 0
+  - beatNum: 8
+    type: 0
+    pitch: 0
+    hold: 0
+  - beatNum: 9
     type: 0
     pitch: 0
     hold: 0
