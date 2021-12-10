@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerMov2 : MonoBehaviour{
     private Vector2 _moveInput = Vector2.zero;
@@ -17,6 +18,24 @@ public class PlayerMov2 : MonoBehaviour{
     private bool _parry2 = false;
  
     private bool _parry3 = false;
+
+    [SerializeField]
+    private Animator _Anim;
+
+    [SerializeField]
+    private VisualEffect visualEffect;
+
+
+
+    [SerializeField]
+    private Material _ParryMat1;
+
+    [SerializeField]
+    private Material _ParryMat2;
+
+    [SerializeField]
+    private Material _ParryMat3;
+
 
     [SerializeField]
     private GameObject _parry1Obj;
@@ -52,31 +71,45 @@ public class PlayerMov2 : MonoBehaviour{
     void Start(){
 
         rend = GetComponent<Renderer>();
+
+       //Anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (_parry1)
         {
-            //float lerp = Mathf.PingPong(Time.time, duration) / duration;
 
-            //_parry1Obj.GetComponent<Renderer>().material.color = Color.Lerp(_parry1Obj.GetComponent<Renderer>().material.color, colorEnd, lerp);
+            Debug.Log("UpdateTest");
+            _ParryMat1.SetColor("_Color",Color.red);
+        }
+        else {
+            _ParryMat1.SetColor("_Color", Color.white);
         }
 
-       
-        _parry1 = false;
 
         if (_parry2)
         {
 
+            Debug.Log("UpdateTest");
+            _ParryMat2.SetColor("_Color", Color.blue);
         }
-        _parry1 = false;
+        else
+        {
+            _ParryMat2.SetColor("_Color", Color.white);
+        }
 
         if (_parry3)
         {
 
+            Debug.Log("UpdateTest");
+            _ParryMat3.SetColor("_Color", Color.yellow);
         }
-        _parry1 = false;
+        else
+        {
+            _ParryMat3.SetColor("_Color", Color.white);
+        }
+
 
     }
 
@@ -95,6 +128,11 @@ public class PlayerMov2 : MonoBehaviour{
             if (_controller.isGrounded){
             _inputVelocity.y = 0;
 
+       
+            _Anim.SetBool("IsJumping", false);
+
+            //visualEffect.SetFloat("YAxis", 0);
+
             if (_slideInput)
             {
                 
@@ -105,8 +143,14 @@ public class PlayerMov2 : MonoBehaviour{
 
                 if (_jumpPressed)
                 {
+
+                    _Anim.SetBool("IsJumping", true);
+
                     _inputVelocity.x = Mathf.Sqrt(2 * _jumpHeight * _gravity);
-                   
+
+                    visualEffect.SetFloat("YAxis", -20);
+
+
                 }
 
             }
@@ -134,11 +178,16 @@ public class PlayerMov2 : MonoBehaviour{
 
     public void OnMove(InputValue input){
         _moveInput = input.Get<Vector2>();
+
+        Debug.Log("Moving");
     }
 
     public void OnJump(InputValue input){
         _jumpPressed = Mathf.Approximately(1, input.Get<float>());
+
+        Debug.Log("Jump");
     }
+
 
     public void OnSlide(InputValue input)
     {
@@ -147,6 +196,7 @@ public class PlayerMov2 : MonoBehaviour{
 
     public void OnParry1(InputValue input)
     {
+
         Debug.Log("OnParry1");
         _parry1 = Mathf.Approximately(1, input.Get<float>());
 
