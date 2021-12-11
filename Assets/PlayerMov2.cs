@@ -190,13 +190,13 @@ public class PlayerMov2 : MonoBehaviour
             }
         }
 
-        if (_fastfall)
-        {
-            _fallMultiplier = 1.5f;
-        }
-        if (_inputVelocity.y <= 0)
+        if (_inputVelocity.y < 0)
         {
             _inputVelocity.y = -1 * _gravity * _fallMultiplier;
+        }
+        else
+        {
+            _inputVelocity.y -= _gravity * Time.fixedDeltaTime;
         }
         _currentVelocity = _inputVelocity;
         _controller.Move(_currentVelocity * Time.fixedDeltaTime);

@@ -17,14 +17,14 @@ MonoBehaviour:
   beatOffset: 0
   startTime: 0
   endTime: 0
-  timeLoop: 55.384617
+  timeLoop: 0
   beats:
   - beatNum: 1
     type: 0
     pitch: 0
     hold: 0
   - beatNum: 3
-    type: 0
+    type: 1
     pitch: 0
     hold: 0
   - beatNum: 5
@@ -32,11 +32,11 @@ MonoBehaviour:
     pitch: 0
     hold: 0
   - beatNum: 6
-    type: 0
+    type: 2
     pitch: 0
     hold: 0
   - beatNum: 8
-    type: 0
+    type: 1
     pitch: 0
     hold: 0
   - beatNum: 9

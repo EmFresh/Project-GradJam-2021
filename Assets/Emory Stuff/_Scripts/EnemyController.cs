@@ -34,6 +34,9 @@ public class EnemyController : MonoBehaviour
 
         var tmp = player.GetComponentInChildren<PlayerMov2>();
 
+
+        var rand = new System.Random();
+        beatOffset = rand.Next(0, 8);
         //noteTargets.
 
         noteTargets.Add(tmp._parry1Obj);
@@ -57,13 +60,19 @@ public class EnemyController : MonoBehaviour
 
     void shoot(BeatMap.NoteData a, int b)
     {
+        if (Vector3.Distance(player.transform.GetChild(0).position, transform.position) > 50)
+            return;
+
         print("shoot!");
 
         var sfx = GetComponents<StudioEventEmitter>()[(short)a.type];
         sfx.EventInstance.setPitch(1 + a.pitch * 0.05f);
+        sfx.EventInstance.setVolume(.5f);
         sfx.Play();
 
         var tmp = bulletPool.getNewObject(transform.position, Vector3.zero);
+        Color[] colours = { new Color(1, 0, 0), new Color(0, 0, 1), new Color(1, 1, 0) };
+        tmp.GetComponent<Renderer>().material.color = colours[(short)a.type];
         tmp.GetComponent<BulletControl>().pool = bulletPool;
         tmp.GetComponent<BulletControl>().reset(3, player, noteTargets[(short)a.type]);
         //  tmp.GetComponent<BulletControl>().lifetime = 3;

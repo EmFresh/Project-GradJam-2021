@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7297131058465659270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 788871929852248097}
   m_Father: {fileID: 0}
@@ -49,10 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 0}
-  noteTargets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  player: {fileID: 0}
   bulletPool: {fileID: 11400000, guid: e14fbac6d2d45f04584f089d2f15df80, type: 2}
   map: {fileID: 11400000, guid: 30d0b88b6e209ee40950c69f6f92f393, type: 2}
   beatOffset: 0

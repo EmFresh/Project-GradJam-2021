@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 625d7bd9a17991f49b6029aaccf6d95d, type: 3}
   m_Name: Rhythm 2
   m_EditorClassIdentifier: 
-  beatCounter: {fileID: 0}
-  bpm: 0
+  beatCounter: {fileID: 11400000, guid: 53b50514d01941a45a96716d18b33439, type: 2}
+  bpm: 130
   beatOffset: 0
   startTime: 0
   endTime: 0
-  timeLoop: 0
+  timeLoop: 133.38461
   beats:
   - beatNum: 1
-    type: 0
+    type: 2
     pitch: 0
     hold: 0
   - beatNum: 3
-    type: 0
+    type: 1
     pitch: 0
     hold: 0
   - beatNum: 8
-    type: 0
+    type: 1
     pitch: 0
     hold: 0
   - beatNum: 9
@@ -36,7 +36,7 @@ MonoBehaviour:
     pitch: 0
     hold: 0
   - beatNum: 10
-    type: 0
+    type: 2
     pitch: 0
     hold: 0
   - beatNum: 17

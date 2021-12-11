@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9495154dfdae32e4fa7f61a381392739, type: 3}
   m_Name: Bullets Pool
   m_EditorClassIdentifier: 
-  poolObj: {fileID: 6998559929273502950, guid: 9495d9401ea7a76418715a6adea868fa, type: 3}
+  poolObj: {fileID: 1777800199828485649, guid: 9966daa8260eb5449a91272ab1a899b6, type: 3}
   cap: 10
   instantiateOnLoad: 1
   objects:
